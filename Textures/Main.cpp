@@ -36,7 +36,7 @@ int main() {
 	};
 
 	// Create the window and set it to the current context
-	GLFWwindow* window = glfwCreateWindow(800, 550, "Textures", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(800, 550, "Bad Apple!!", NULL, NULL);
 	if (window == NULL) {
 		std::cerr << "ERROR: FAILED TO CREATE GLFW WINDOW." << std::endl;
 		glfwTerminate();
