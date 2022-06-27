@@ -70,6 +70,12 @@ void Shader::setMat4(std::string name, const glm::mat4& value) {
 	glUniformMatrix4fv(reference, 1, GL_FALSE, glm::value_ptr(value));
 }
 
+void Shader::setMat3(std::string name, const glm::mat3& value) {
+	this->activate();
+	GLint reference = glGetUniformLocation(this->id, name.c_str());
+	glUniformMatrix3fv(reference, 1, GL_FALSE, glm::value_ptr(value));
+}
+
 void Shader::setVec3(std::string name, const glm::vec3& value) {
 	this->activate();
 	GLint reference = glGetUniformLocation(this->id, name.c_str());

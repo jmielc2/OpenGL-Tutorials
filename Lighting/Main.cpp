@@ -161,6 +161,7 @@ int main() {
 		objectShader.setVec3("objectColor", glm::vec3(1.0f, 0.5f, 0.31f));
 		objectShader.setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
 		objectShader.setVec3("lightPos", lightPosition);
+		objectShader.setVec3("viewPos", camera.position);
 
 		// Calculate Camera Position/View
 		glm::mat4 view = camera.getViewMatrix();
@@ -178,6 +179,14 @@ int main() {
 		float yPos = 3 * sin(glm::radians(currentFrame * 50));
 		model = glm::translate(model, glm::vec3(xPos, -1.0f, yPos));
 		objectShader.setMat4("model", model);
+		lightShader.setMat4("model", model);
+
+		// Normal Matrix for Lighting Calculations
+		glm::mat3 normalMatrix = glm::transpose(glm::inverse(model));
+		objectShader.setMat3("normalMatrix", normalMatrix);
+		lightShader.setMat3("normalMatrix", normalMatrix);
+
+		// Draw the Object
 		objectShader.activate();
 		objectVAO.bind();
 		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);

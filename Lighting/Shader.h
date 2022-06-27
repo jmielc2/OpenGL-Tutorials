@@ -13,6 +13,7 @@ public:
 	Shader(std::string vertexFile, std::string fragFile);
 
 	void setMat4(std::string name, const glm::mat4& value);
+	void setMat3(std::string name, const glm::mat3& value);
 	void setVec3(std::string name, const glm::vec3& value);
 	void activate();
 	void destroy();
